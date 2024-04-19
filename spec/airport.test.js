@@ -31,3 +31,29 @@ console.log(`=========================`);
 
 // Clean Up
 cleanUp()
+
+//? TEST 2
+//* Maximum capacity can be adjusted.
+
+console.log(`TEST 2`);
+console.log(`=========================`);
+console.log(`Maximum capacity can be adjusted.`);
+
+// Arrange
+let newTime = 15;
+expected = 15;
+
+// Act
+airport.changeCapacity(newTime);
+actual = airport.maxCapacity;
+
+// Assert
+result = assertEquals(actual, expected);
+
+// Report
+console.log(result ? `Pass` : `Fail`);
+!result && console.log(`Expected: ${expected}; Actual: ${actual}`);
+console.log(`=========================`);
+
+// Clean Up
+cleanUp()
