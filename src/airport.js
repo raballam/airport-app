@@ -1,6 +1,6 @@
 const airport = {
     maxCapacity: 10,
-    changeCapacity(number) {
+    changeCapacity(number = 10) {
         this.maxCapacity = number;
     }
  }

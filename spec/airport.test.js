@@ -5,18 +5,19 @@ const cleanUp = () => {
     expected = undefined;
     actual = undefined;
     result = undefined;
+    testNumber = undefined;
 }
 
+let expected, actual, result, testNumber, testPlane;
 //? TEST 1
 //* Airport has maximum capacity of 10.
 
 console.log(`TEST 1`);
-console.log(`=========================`);
 console.log(`Airport has maximum capacity of 10.`);
+console.log(`=========================`);
 
 // Arrange
-let expected = 10; 
-let actual, result;
+expected = 10; 
 
 // Act
 actual = airport.maxCapacity;
@@ -28,6 +29,7 @@ result = assertEquals(actual, expected);
 console.log(result ? `Pass` : `Fail`);
 !result && console.log(`Expected: ${expected}; Actual: ${actual}`);
 console.log(`=========================`);
+console.log();
 
 // Clean Up
 cleanUp()
@@ -36,15 +38,15 @@ cleanUp()
 //* Maximum capacity can be adjusted.
 
 console.log(`TEST 2`);
-console.log(`=========================`);
 console.log(`Maximum capacity can be adjusted.`);
+console.log(`=========================`);
 
 // Arrange
-let newTime = 15;
+testNumber = 15;
 expected = 15;
 
 // Act
-airport.changeCapacity(newTime);
+airport.changeCapacity(testNumber);
 actual = airport.maxCapacity;
 
 // Assert
@@ -54,6 +56,37 @@ result = assertEquals(actual, expected);
 console.log(result ? `Pass` : `Fail`);
 !result && console.log(`Expected: ${expected}; Actual: ${actual}`);
 console.log(`=========================`);
+console.log();
 
 // Clean Up
 cleanUp()
+
+
+//? TEST 3
+//* Verify that default is 10
+
+console.log(`TEST 3`);
+console.log(`Verify that default is 10`);
+console.log(`=========================`);
+
+// Arrange
+testNumber;
+expected = 10;
+
+// Act
+airport.changeCapacity(testNumber);
+actual = airport.maxCapacity;
+
+// Assert
+result = assertEquals(actual, expected);
+
+// Report
+console.log(result ? `Pass` : `Fail`);
+!result && console.log(`Expected: ${expected}; Actual: ${actual}`);
+console.log(`=========================`);
+console.log();
+
+// Clean Up
+cleanUp()
+
+
