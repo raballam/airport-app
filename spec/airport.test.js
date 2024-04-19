@@ -8,7 +8,8 @@ const cleanUp = () => {
     testNumber = undefined;
 }
 
-let expected, actual, result, testNumber, testPlane;
+let expected, actual, result, testNumber;
+
 //? TEST 1
 //* Airport has maximum capacity of 10.
 
@@ -89,4 +90,30 @@ console.log();
 // Clean Up
 cleanUp()
 
+//? TEST 4
+//* Verify that null is set to default.
+
+console.log(`TEST 4`);
+console.log(`Verify that null is set to default`);
+console.log(`=========================`);
+
+// Arrange
+testNumber = null;
+expected = 10;
+
+// Act
+airport.changeCapacity(testNumber);
+actual = airport.maxCapacity;
+
+// Assert
+result = assertEquals(actual, expected);
+
+// Report
+console.log(result ? `Pass` : `Fail`);
+!result && console.log(`Expected: ${expected}; Actual: ${actual}`);
+console.log(`=========================`);
+console.log();
+
+// Clean Up
+cleanUp()
 
