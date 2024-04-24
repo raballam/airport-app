@@ -11,6 +11,13 @@ const cleanUp = () => {
     airport.currentPlanes = [];
 }
 
+const report = () => {
+    console.log(result ? `Pass` : `Fail`);
+    !result && console.log(`Expected: ${expected}; Actual: ${actual}`);
+    console.log(`=========================`);
+    console.log();
+}
+
 let expected, actual, result, testNumber, testPlane, testPlane2, testId;
 
 //? TEST 1
@@ -30,13 +37,10 @@ actual = airport.maxCapacity;
 result = assertEquals(actual, expected);
 
 // Report
-console.log(result ? `Pass` : `Fail`);
-!result && console.log(`Expected: ${expected}; Actual: ${actual}`);
-console.log(`=========================`);
-console.log();
+report();
 
 // Clean Up
-cleanUp()
+cleanUp();
 
 //? TEST 2
 //* Maximum capacity can be adjusted.
@@ -57,13 +61,10 @@ actual = airport.maxCapacity;
 result = assertEquals(actual, expected);
 
 // Report
-console.log(result ? `Pass` : `Fail`);
-!result && console.log(`Expected: ${expected}; Actual: ${actual}`);
-console.log(`=========================`);
-console.log();
+report();
 
 // Clean Up
-cleanUp()
+cleanUp();
 
 
 //? TEST 3
@@ -85,13 +86,10 @@ actual = airport.maxCapacity;
 result = assertEquals(actual, expected);
 
 // Report
-console.log(result ? `Pass` : `Fail`);
-!result && console.log(`Expected: ${expected}; Actual: ${actual}`);
-console.log(`=========================`);
-console.log();
+report();
 
 // Clean Up
-cleanUp()
+cleanUp();
 
 //? TEST 4
 //* Verify that null is set to default.
@@ -112,13 +110,10 @@ actual = airport.maxCapacity;
 result = assertEquals(actual, expected);
 
 // Report
-console.log(result ? `Pass` : `Fail`);
-!result && console.log(`Expected: ${expected}; Actual: ${actual}`);
-console.log(`=========================`);
-console.log();
+report();
 
 // Clean Up
-cleanUp()
+cleanUp();
 
 //? TEST 5
 //* Verify that capacity cannot be negative
@@ -139,13 +134,10 @@ actual = airport.maxCapacity;
 result = assertEquals(actual, expected);
 
 // Report
-console.log(result ? `Pass` : `Fail`);
-!result && console.log(`Expected: ${expected}; Actual: ${actual}`);
-console.log(`=========================`);
-console.log();
+report();
 
 // Clean Up
-cleanUp()
+cleanUp();
 
 //? TEST 6
 //* numberOfPlanes increases by 1 when plane lands
@@ -166,13 +158,10 @@ actual = airport.currentPlanes.length;
 result = assertEquals(actual, expected);
 
 // Report
-console.log(result ? `Pass` : `Fail`);
-!result && console.log(`Expected: ${expected}; Actual: ${actual}`);
-console.log(`=========================`);
-console.log();
+report();
 
 // Clean Up
-cleanUp()
+cleanUp();
 
 //? TEST 7
 //* The plane added to currentPlanes is the same as the plane that lands
@@ -194,13 +183,10 @@ actual = airport.currentPlanes[0].id;
 result = assertEquals(actual, expected);
 
 // Report
-console.log(result ? `Pass` : `Fail`);
-!result && console.log(`Expected: ${expected}; Actual: ${actual}`);
-console.log(`=========================`);
-console.log();
+report();
 
 // Clean Up
-cleanUp()
+cleanUp();
 
 //? TEST 8
 //* Verify that planes can land when planes are already in the airport
@@ -223,13 +209,38 @@ actual = airport.currentPlanes.length;
 result = assertEquals(actual, expected);
 
 // Report
-console.log(result ? `Pass` : `Fail`);
-!result && console.log(`Expected: ${expected}; Actual: ${actual}`);
-console.log(`=========================`);
-console.log();
+report();
 
 // Clean Up
-cleanUp()
+cleanUp();
+
+//? TEST 9
+//* Verify that currentPlanes decreases by 1 when a plane takes off
+
+console.log(`TEST 9`);
+console.log(`Verify that currentPlanes decreases by 1 when a plane takes off`);
+console.log(`=========================`);
+
+// Arrange
+testPlane = new Plane;
+airport.planeLand(testPlane);
+expected = airport.currentPlanes.length - 1;
+
+// Act
+airport.planeTakeOff(testPlane);
+actual = airport.currentPlanes.length;
+
+// Assert
+result = assertEquals(actual, expected);
+
+// Report
+report();
+
+// Clean Up
+cleanUp();
+
+
+
 
 
 
