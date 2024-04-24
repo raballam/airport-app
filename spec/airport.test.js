@@ -117,3 +117,30 @@ console.log();
 // Clean Up
 cleanUp()
 
+//? TEST 5
+//* Verify that capacity cannot be negative
+
+console.log(`TEST 5`);
+console.log(`Verify that capacity cannot be negative`);
+console.log(`=========================`);
+
+// Arrange
+testNumber = -1;
+expected = 10;
+
+// Act
+airport.changeCapacity(testNumber);
+actual = airport.maxCapacity;
+
+// Assert
+result = assertEquals(actual, expected);
+
+// Report
+console.log(result ? `Pass` : `Fail`);
+!result && console.log(`Expected: ${expected}; Actual: ${actual}`);
+console.log(`=========================`);
+console.log();
+
+// Clean Up
+cleanUp()
+
