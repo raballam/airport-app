@@ -1,14 +1,16 @@
 import { assertEquals } from "./test-framework/test-framework.js";
 import airport from "../src/airport.js";
+import Plane from "../src/Plane.js";
 
 const cleanUp = () => {
     expected = undefined;
     actual = undefined;
     result = undefined;
     testNumber = undefined;
+    testPlane = undefined;
 }
 
-let expected, actual, result, testNumber;
+let expected, actual, result, testNumber, testPlane;
 
 //? TEST 1
 //* Airport has maximum capacity of 10.
@@ -143,4 +145,33 @@ console.log();
 
 // Clean Up
 cleanUp()
+
+//? TEST 6
+//* numberOfPlanes increases by 1 when plane lands
+
+console.log(`TEST 6`);
+console.log(`currentPlanes array increases by 1 when plane lands`);
+console.log(`=========================`);
+
+// Arrange
+testPlane = new Plane;
+expected = airport.currentPlanes.length + 1;
+
+// Act
+airport.planeLand(testPlane);
+actual = airport.currentPlanes.length;
+
+// Assert
+result = assertEquals(actual, expected);
+
+// Report
+console.log(result ? `Pass` : `Fail`);
+!result && console.log(`Expected: ${expected}; Actual: ${actual}`);
+console.log(`=========================`);
+console.log();
+
+// Clean Up
+cleanUp()
+
+
 
