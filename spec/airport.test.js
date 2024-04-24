@@ -373,3 +373,56 @@ cleanUp();
 
 //! END OF TEST 13
 
+
+//? TEST 14
+//* Plane can't take off if it's not at the airport
+
+console.log(`TEST 14`);
+console.log(`Plane can't take off if it's not at the airport`);
+console.log(`=========================`);
+
+// Arrange
+testPlane = new Plane(testId);
+expected = false;
+
+// Act
+actual = airport.planeTakeOff(testPlane);
+
+// Assert
+result = assertEquals(actual, expected);
+
+// Report
+report();
+
+// Clean Up
+cleanUp();
+
+//! END OF TEST 14
+
+//? TEST 15
+//* No planes are removed from currentPlanes if planeTakeOff is called with plane that is not there
+
+console.log(`TEST 15`);
+console.log(`No planes are removed from currentPlanes if planeTakeOff is called with plane that is not there`);
+console.log(`=========================`);
+
+// Arrange
+testPlane = new Plane(testId);
+testPlane2 = new Plane(testId2);
+airport.planeLand(testPlane);
+expected = airport.currentPlanes.length;
+
+// Act
+airport.planeTakeOff(testPlane2);
+actual = airport.currentPlanes.length;
+
+// Assert
+result = assertEquals(actual, expected);
+
+// Report
+report();
+
+// Clean Up
+cleanUp();
+
+//! END OF TEST 15

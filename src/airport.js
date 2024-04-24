@@ -15,6 +15,9 @@ const airport = {
     },
 
     planeTakeOff(plane) {
+        if (!this.currentPlanes.includes(plane)) {
+            return false;
+        }
         this.currentPlanes.splice(this.currentPlanes.indexOf(plane));
     }
     
