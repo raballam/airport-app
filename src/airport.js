@@ -24,9 +24,9 @@ const airport = {
     safeWeather(weather) {
         if (weather === "stormy") { 
             return false;
-        } // else {
-        //     return true;
-        // }
+        } else {
+             return true;
+        }
     }
     
  }

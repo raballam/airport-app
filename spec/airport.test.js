@@ -8,6 +8,7 @@ const cleanUp = () => {
     result = undefined;
     testNumber = undefined;
     airport.changeCapacity();
+    testWeather = undefined;
 }
 
 const cleanUpPlanes = () => {
@@ -23,7 +24,7 @@ const report = () => {
     console.log();
 }
 
-let expected, actual, result, testNumber, testPlane, testPlane2;
+let expected, actual, result, testNumber, testPlane, testPlane2, testWeather;
 let testId = 1;
 let testId2 = 2;
 
@@ -452,7 +453,7 @@ console.log(`Verify that airport.safeWeather returns false if weather is stormy`
 console.log(`=========================`);
 
 // Arrange
-let testWeather = "stormy";
+testWeather = "stormy";
 expected = false;
 
 // Act
@@ -471,3 +472,28 @@ cleanUpPlanes();
 //! END OF TEST 16
 
 
+//? TEST 17
+//* Verify that airport.safeWeather returns true if weather is not stormy
+
+console.log(`TEST 17`);
+console.log(`Verify that airport.safeWeather returns true if weather is not stormy`);
+console.log(`=========================`);
+
+// Arrange
+testWeather = "not stormy";
+expected = true;
+
+// Act
+actual = airport.safeWeather(testWeather);
+
+// Assert
+result = assertTrue(actual);
+
+// Report
+report();
+
+// Clean Up
+cleanUp();
+cleanUpPlanes();
+
+//! END OF TEST 17
