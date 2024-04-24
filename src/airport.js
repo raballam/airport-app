@@ -19,6 +19,14 @@ const airport = {
             return false;
         }
         this.currentPlanes.splice(this.currentPlanes.indexOf(plane));
+    },
+
+    safeWeather(weather) {
+        if (weather === "stormy") { 
+            return false;
+        } // else {
+        //     return true;
+        // }
     }
     
  }

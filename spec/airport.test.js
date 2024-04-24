@@ -1,4 +1,4 @@
-import { assertEquals } from "./test-framework/test-framework.js";
+import { assertEquals, assertTrue, assertFalse } from "./test-framework/test-framework.js";
 import airport from "../src/airport.js";
 import Plane from "../src/Plane.js";
 
@@ -7,10 +7,13 @@ const cleanUp = () => {
     actual = undefined;
     result = undefined;
     testNumber = undefined;
-    testPlane = undefined;
-    testPlane = undefined;
-    airport.currentPlanes = [];
     airport.changeCapacity();
+}
+
+const cleanUpPlanes = () => {
+    testPlane = undefined;
+    testPlane2 = undefined;
+    airport.currentPlanes = [];
 }
 
 const report = () => {
@@ -126,6 +129,7 @@ cleanUp();
 
 //! END OF TEST 4
 
+
 //? TEST 5
 //* Verify that capacity cannot be negative
 
@@ -152,6 +156,7 @@ cleanUp();
 
 //! END OF TEST 5
 
+
 //? TEST 6
 //* numberOfPlanes increases by 1 when plane lands
 
@@ -175,6 +180,7 @@ report();
 
 // Clean Up
 cleanUp();
+cleanUpPlanes();
 
 //! END OF TEST 6
 
@@ -201,6 +207,7 @@ report();
 
 // Clean Up
 cleanUp();
+cleanUpPlanes();
 
 //! END OF TEST 7
 
@@ -229,6 +236,7 @@ report();
 
 // Clean Up
 cleanUp();
+cleanUpPlanes();
 
 //! END OF TEST 8
 
@@ -256,6 +264,7 @@ report();
 
 // Clean Up
 cleanUp();
+cleanUpPlanes();
 
 //! END OF TEST 9
 
@@ -278,13 +287,14 @@ airport.planeTakeOff(testPlane)
 actual = airport.currentPlanes.includes(testPlane);
 
 // Assert
-result = assertEquals(actual, expected);
+result = assertFalse(actual);
 
 // Report
 report();
 
 // Clean Up
 cleanUp();
+cleanUpPlanes();
 
 //! END OF TEST 10
 
@@ -314,6 +324,7 @@ report();
 
 // Clean Up
 cleanUp();
+cleanUpPlanes();
 
 //! END OF TEST 11
 
@@ -336,13 +347,14 @@ airport.planeLand(testPlane2);
 actual = airport.currentPlanes.includes(testPlane2);
 
 // Assert
-result = assertEquals(actual, expected);
+result = assertTrue(actual);
 
 // Report
 report();
 
 // Clean Up
 cleanUp();
+cleanUpPlanes();
 
 //! END OF TEST 12
 
@@ -363,13 +375,14 @@ expected = false;
 actual = airport.planeLand(testPlane);
 
 // Assert
-result = assertEquals(actual, expected);
+result = assertFalse(actual);
 
 // Report
 report();
 
 // Clean Up
 cleanUp();
+cleanUpPlanes();
 
 //! END OF TEST 13
 
@@ -389,15 +402,17 @@ expected = false;
 actual = airport.planeTakeOff(testPlane);
 
 // Assert
-result = assertEquals(actual, expected);
+result = assertFalse(actual);
 
 // Report
 report();
 
 // Clean Up
 cleanUp();
+cleanUpPlanes();
 
 //! END OF TEST 14
+
 
 //? TEST 15
 //* No planes are removed from currentPlanes if planeTakeOff is called with plane that is not there
@@ -424,5 +439,35 @@ report();
 
 // Clean Up
 cleanUp();
+cleanUpPlanes();
 
 //! END OF TEST 15
+
+
+//? TEST 16
+//* Verify that airport.safeWeather returns false if weather is stormy
+
+console.log(`TEST 16`);
+console.log(`Verify that airport.safeWeather returns false if weather is stormy`);
+console.log(`=========================`);
+
+// Arrange
+let testWeather = "stormy";
+expected = false;
+
+// Act
+actual = airport.safeWeather(testWeather);
+
+// Assert
+result = assertFalse(actual);
+
+// Report
+report();
+
+// Clean Up
+cleanUp();
+cleanUpPlanes();
+
+//! END OF TEST 16
+
+
