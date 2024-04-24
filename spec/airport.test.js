@@ -10,6 +10,7 @@ const cleanUp = () => {
     testPlane = undefined;
     testPlane = undefined;
     airport.currentPlanes = [];
+    airport.changeCapacity();
 }
 
 const report = () => {
@@ -45,6 +46,8 @@ report();
 // Clean Up
 cleanUp();
 
+//! END OF TEST 1
+
 //? TEST 2
 //* Maximum capacity can be adjusted.
 
@@ -69,6 +72,7 @@ report();
 // Clean Up
 cleanUp();
 
+//! END OF TEST 2
 
 //? TEST 3
 //* Verify that default is 10
@@ -94,6 +98,8 @@ report();
 // Clean Up
 cleanUp();
 
+//! END OF TEST 3
+
 //? TEST 4
 //* Verify that null is set to default.
 
@@ -117,6 +123,8 @@ report();
 
 // Clean Up
 cleanUp();
+
+//! END OF TEST 4
 
 //? TEST 5
 //* Verify that capacity cannot be negative
@@ -142,6 +150,8 @@ report();
 // Clean Up
 cleanUp();
 
+//! END OF TEST 5
+
 //? TEST 6
 //* numberOfPlanes increases by 1 when plane lands
 
@@ -166,6 +176,8 @@ report();
 // Clean Up
 cleanUp();
 
+//! END OF TEST 6
+
 //? TEST 7
 //* The plane added to currentPlanes is the same as the plane that lands
 
@@ -189,6 +201,8 @@ report();
 
 // Clean Up
 cleanUp();
+
+//! END OF TEST 7
 
 //? TEST 8
 //* Verify that planes can land when planes are already in the airport
@@ -216,6 +230,8 @@ report();
 // Clean Up
 cleanUp();
 
+//! END OF TEST 8
+
 //? TEST 9
 //* Verify that currentPlanes decreases by 1 when a plane takes off
 
@@ -240,6 +256,8 @@ report();
 
 // Clean Up
 cleanUp();
+
+//! END OF TEST 9
 
 //? TEST 10
 //* Verify that plane removed from currentPlanes is correct plane
@@ -268,6 +286,8 @@ report();
 // Clean Up
 cleanUp();
 
+//! END OF TEST 10
+
 //? TEST 11
 //* Planes cannot land if maximum capacity has been reached
 
@@ -294,6 +314,8 @@ report();
 
 // Clean Up
 cleanUp();
+
+//! END OF TEST 11
 
 //? TEST 12
 //* Plane can land if it will cause airport to reach capacity
@@ -322,4 +344,32 @@ report();
 // Clean Up
 cleanUp();
 
+//! END OF TEST 12
+
+//? TEST 13
+//* Plane can't land if it's already at the airport
+
+console.log(`TEST 13`);
+console.log(`Plane can't land if it's already at the airport`);
+console.log(`=========================`);
+
+// Arrange
+testPlane = new Plane(testId);
+testPlane2 = new Plane(testId2);
+airport.planeLand(testPlane);
+expected = false;
+
+// Act
+actual = airport.planeLand(testPlane);
+
+// Assert
+result = assertEquals(actual, expected);
+
+// Report
+report();
+
+// Clean Up
+cleanUp();
+
+//! END OF TEST 13
 

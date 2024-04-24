@@ -8,9 +8,10 @@ const airport = {
     },
 
     planeLand(plane) {
-        if (this.currentPlanes.length < this.maxCapacity) {
-            this.currentPlanes.push(plane);
+        if (this.currentPlanes.length >= this.maxCapacity || this.currentPlanes.includes(plane)) {
+            return false;    
         }
+        this.currentPlanes.push(plane);
     },
 
     planeTakeOff(plane) {
@@ -20,3 +21,4 @@ const airport = {
  }
 
 export default airport;
+
