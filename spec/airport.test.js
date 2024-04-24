@@ -8,6 +8,7 @@ const cleanUp = () => {
     result = undefined;
     testNumber = undefined;
     testPlane = undefined;
+    testPlane = undefined;
     airport.currentPlanes = [];
 }
 
@@ -294,5 +295,31 @@ report();
 // Clean Up
 cleanUp();
 
+//? TEST 12
+//* Plane can land if it will cause airport to reach capacity
+
+console.log(`TEST 12`);
+console.log(`Plane can land if it will cause airport to reach capacity`);
+console.log(`=========================`);
+
+// Arrange
+testPlane = new Plane;
+testPlane2 = new Plane;
+airport.changeCapacity(2);
+airport.planeLand(testPlane);
+expected = true;
+
+// Act
+airport.planeLand(testPlane2);
+actual = airport.currentPlanes.includes(testPlane2);
+
+// Assert
+result = assertEquals(actual, expected);
+
+// Report
+report();
+
+// Clean Up
+cleanUp();
 
 
