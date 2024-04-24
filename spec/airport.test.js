@@ -8,9 +8,10 @@ const cleanUp = () => {
     result = undefined;
     testNumber = undefined;
     testPlane = undefined;
+    airport.currentPlanes = [];
 }
 
-let expected, actual, result, testNumber, testPlane;
+let expected, actual, result, testNumber, testPlane, testPlane2, testId;
 
 //? TEST 1
 //* Airport has maximum capacity of 10.
@@ -159,6 +160,63 @@ expected = airport.currentPlanes.length + 1;
 
 // Act
 airport.planeLand(testPlane);
+actual = airport.currentPlanes.length;
+
+// Assert
+result = assertEquals(actual, expected);
+
+// Report
+console.log(result ? `Pass` : `Fail`);
+!result && console.log(`Expected: ${expected}; Actual: ${actual}`);
+console.log(`=========================`);
+console.log();
+
+// Clean Up
+cleanUp()
+
+//? TEST 7
+//* The plane added to currentPlanes is the same as the plane that lands
+
+console.log(`TEST 7`);
+console.log(`The plane added to currentPlanes is the same as the plane that lands`);
+console.log(`=========================`);
+
+// Arrange
+testId = 5;
+testPlane = new Plane(testId);
+expected = testId;
+
+// Act
+airport.planeLand(testPlane);
+actual = airport.currentPlanes[0].id;
+
+// Assert
+result = assertEquals(actual, expected);
+
+// Report
+console.log(result ? `Pass` : `Fail`);
+!result && console.log(`Expected: ${expected}; Actual: ${actual}`);
+console.log(`=========================`);
+console.log();
+
+// Clean Up
+cleanUp()
+
+//? TEST 8
+//* Verify that planes can land when planes are already in the airport
+
+console.log(`TEST 8`);
+console.log(`Verify that planes can land when planes are already in the airport`);
+console.log(`=========================`);
+
+// Arrange
+testPlane = new Plane;
+testPlane2 = new Plane;
+airport.planeLand(testPlane);
+expected = 2;
+
+// Act
+airport.planeLand(testPlane2);
 actual = airport.currentPlanes.length;
 
 // Assert
