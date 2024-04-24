@@ -8,7 +8,9 @@ const airport = {
     },
 
     planeLand(plane) {
-        this.currentPlanes.push(plane);
+        if (this.currentPlanes.length < this.maxCapacity) {
+            this.currentPlanes.push(plane);
+        }
     },
 
     planeTakeOff(plane) {

@@ -9,8 +9,6 @@ const cleanUp = () => {
     testNumber = undefined;
     testPlane = undefined;
     airport.currentPlanes = [];
-    testId = undefined;
-    testId2 = undefined;
 }
 
 const report = () => {
@@ -20,7 +18,9 @@ const report = () => {
     console.log();
 }
 
-let expected, actual, result, testNumber, testPlane, testPlane2, testId, testId2;
+let expected, actual, result, testNumber, testPlane, testPlane2;
+let testId = 1;
+let testId2 = 2;
 
 //? TEST 1
 //* Airport has maximum capacity of 10.
@@ -173,7 +173,6 @@ console.log(`The plane added to currentPlanes is the same as the plane that land
 console.log(`=========================`);
 
 // Arrange
-testId = 5;
 testPlane = new Plane(testId);
 expected = testId;
 
@@ -249,8 +248,6 @@ console.log(`Verify that plane removed from currentPlanes is correct plane`);
 console.log(`=========================`);
 
 // Arrange
-testId = 1;
-testId2 = 2;
 testPlane = new Plane(testId);
 testPlane2 = new Plane(testId2);
 airport.planeLand(testPlane);
@@ -262,7 +259,7 @@ airport.planeTakeOff(testPlane)
 actual = airport.currentPlanes.includes(testPlane);
 
 // Assert
-result = assertEquals(actual, expected)
+result = assertEquals(actual, expected);
 
 // Report
 report();
@@ -270,6 +267,32 @@ report();
 // Clean Up
 cleanUp();
 
+//? TEST 11
+//* Planes cannot land if maximum capacity has been reached
+
+console.log(`TEST 11`);
+console.log(`Planes cannot land if maximum capacity has been reached`);
+console.log(`=========================`);
+
+// Arrange
+testPlane = new Plane;
+testPlane2 = new Plane;
+airport.changeCapacity(1);
+airport.planeLand(testPlane);
+expected = airport.currentPlanes.length;
+
+// Act
+airport.planeLand(testPlane2);
+actual = airport.currentPlanes.length;
+
+// Assert
+result = assertEquals(actual, expected);
+
+// Report
+report();
+
+// Clean Up
+cleanUp();
 
 
 
