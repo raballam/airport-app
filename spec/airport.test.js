@@ -9,6 +9,8 @@ const cleanUp = () => {
     testNumber = undefined;
     testPlane = undefined;
     airport.currentPlanes = [];
+    testId = undefined;
+    testId2 = undefined;
 }
 
 const report = () => {
@@ -18,7 +20,7 @@ const report = () => {
     console.log();
 }
 
-let expected, actual, result, testNumber, testPlane, testPlane2, testId;
+let expected, actual, result, testNumber, testPlane, testPlane2, testId, testId2;
 
 //? TEST 1
 //* Airport has maximum capacity of 10.
@@ -239,7 +241,34 @@ report();
 // Clean Up
 cleanUp();
 
+//? TEST 10
+//* Verify that plane removed from currentPlanes is correct plane
 
+console.log(`TEST 10`);
+console.log(`Verify that plane removed from currentPlanes is correct plane`);
+console.log(`=========================`);
+
+// Arrange
+testId = 1;
+testId2 = 2;
+testPlane = new Plane(testId);
+testPlane2 = new Plane(testId2);
+airport.planeLand(testPlane);
+airport.planeLand(testPlane2);
+expected = false;
+
+// Act
+airport.planeTakeOff(testPlane)
+actual = airport.currentPlanes.includes(testPlane);
+
+// Assert
+result = assertEquals(actual, expected)
+
+// Report
+report();
+
+// Clean Up
+cleanUp();
 
 
 
