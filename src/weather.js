@@ -1,7 +1,7 @@
 const weather = {
 
     get currentWeather() {
-        if (Math.random() < 0.3) {
+        if (Math.random() < 0.2) {
             return 'stormy';
         } else {
             return 'not stormy';

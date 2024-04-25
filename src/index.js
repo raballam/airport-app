@@ -2,74 +2,47 @@ import airport from "./airport.js";
 import Plane from "./Plane.js";
 import weather from "./weather.js";
 
-// Generate planes
-// Generate Error messages as print out?
+let  newCapacity, conditions, planeIndex, plane;
 
-let i, planeId1, planeId2, plane1, plane2, newCapacity, conditions;
+// Generates array of test planes
+const planes = [];
+const numberOfPlanes = 10;
+for (let i = 0; i < numberOfPlanes; i++) {
+    const plane = new Plane(i + 1);
+    planes.push(plane);
+}
 
-// planeId1 = 1;
-// planeId2 = 2;
+//* DEMO - randomly selects planes from array and attempts to land/take off
 
-// plane1 = new Plane(planeId1)
-
-// conditions = weather.currentWeather;
-
-// try {
-//     airport.planeLand(plane1, conditions);
-//     console.log(`PLANE ${plane1.id} LANDED SUCCESSFULLY`);
-//     //return true;
-// } catch (error) {
-//     console.log(`PLANE ${plane1.id} UNABLE TO LAND`);
-//     console.log(error);
-//    // return false;
-// }
-// try {
-//     airport.planeLand(plane1, conditions);
-//     console.log(`PLANE ${plane1.id} LANDED SUCCESSFULLY`);
-//     //return true;
-// } catch (error) {
-//     console.log(`PLANE ${plane1.id} UNABLE TO LAND`);
-//     console.log(error);
-//    // return false;
-// }
-
-
-i = 0;
+let i = 0;
 while (i < 15) {
-    planeId1 = Math.floor(Math.random() * 10) + 1;
-    planeId2 = Math.floor(Math.random() * 10) + 1;
-    plane1 = new Plane(planeId1);
-    plane2 = new Plane(planeId2);
+    planeIndex = Math.floor(Math.random() * 5);
+    plane = planes[planeIndex];
     conditions = weather.currentWeather;
 
-    // Just to demonstrate airport.changeCapacity functionality
     if (Math.random() < 0.1) {
         newCapacity = Math.floor(Math.random() * 10) + 1;
         airport.changeCapacity(newCapacity);
-        console.log(`AIRPORT CAPACITY HAS BEEN CHANGED TO ${airport.maxCapacity}\n`);
+        console.log(`** AIRPORT CAPACITY HAS BEEN CHANGED TO ${airport.maxCapacity} **\n`);
+
     };
 
-    try {
-    airport.planeLand(plane1, conditions);
-    console.log(`PLANE ${plane1.id} CAN LAND\n`);
-    //return true;
-    } catch (error) {
-        console.log(`PLANE ${plane1.id} UNABLE TO LAND DUE TO:`);
-        console.error(`\t`, error.message, `\n`);
-    // return false;
-    }
+    if (Math.random() < 0.5) {
+        try {
+            airport.planeLand(plane, conditions);
+            console.log(`PLANE ${plane.id} CAN LAND\n`);
 
-    try {
-        airport.planeTakeOff(plane2, conditions);
-        console.log(`PLANE ${plane2.id} CAN TAKE OFF\n`);
-        //return true;
-    } catch (error) {
-        console.log(`PLANE ${plane2.id} UNABLE TO TAKE OFF DUE TO:`);
-        console.error(`\t`, error.message, `\n`);
-        console.log(airport.currentPlanes);
-    // return false;
-    }
+        } catch (error) {
+            console.error(error.message, `\n`);
+        }
+    } else {
+        try {
+            airport.planeTakeOff(plane, conditions);
+            console.log(`PLANE ${plane.id} CAN TAKE OFF\n`);
 
+        } catch (error) {
+            console.error(error.message, `\n`);
+        }
+    }
     i++;
 };
-

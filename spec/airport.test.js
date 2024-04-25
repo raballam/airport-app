@@ -7,14 +7,13 @@ const cleanUp = () => {
     actual = undefined;
     result = undefined;
     testNumber = undefined;
-    airport.changeCapacity();
-    testStormy = undefined;
 }
 
-const cleanUpPlanes = () => {
-    testPlane = undefined;
-    testPlane2 = undefined;
+const cleanUpAirport = () => {
+    airport.changeCapacity();
+    testStormy = undefined;
     airport.currentPlanes = [];
+
 }
 
 const report = () => {
@@ -24,9 +23,12 @@ const report = () => {
     console.log();
 }
 
-let expected, actual, result, testNumber, testPlane, testPlane2, testStormy;
-let testId = 1;
-let testId2 = 2;
+let expected, actual, result, testNumber, testStormy;
+const testId = 1;
+const testId2 = 2;
+const testPlane = new Plane(testId);
+const testPlane2 = new Plane(testId2);
+
 
 //? TEST 1
 //* Airport has maximum capacity of 10.
@@ -75,6 +77,7 @@ report();
 
 // Clean Up
 cleanUp();
+cleanUpAirport();
 
 //! END OF TEST 2
 
@@ -86,7 +89,6 @@ console.log(`Verify that default is 10`);
 console.log(`=========================`);
 
 // Arrange
-testNumber;
 expected = 10;
 
 // Act
@@ -101,6 +103,7 @@ report();
 
 // Clean Up
 cleanUp();
+cleanUpAirport();
 
 //! END OF TEST 3
 
@@ -127,6 +130,7 @@ report();
 
 // Clean Up
 cleanUp();
+cleanUpAirport();
 
 //! END OF TEST 4
 
@@ -154,6 +158,7 @@ report();
 
 // Clean Up
 cleanUp();
+cleanUpAirport();
 
 //! END OF TEST 5
 
@@ -166,7 +171,6 @@ console.log(`currentPlanes array increases by 1 when plane lands`);
 console.log(`=========================`);
 
 // Arrange
-testPlane = new Plane;
 expected = airport.currentPlanes.length + 1;
 
 // Act
@@ -181,7 +185,7 @@ report();
 
 // Clean Up
 cleanUp();
-cleanUpPlanes();
+cleanUpAirport();
 
 //! END OF TEST 6
 
@@ -193,7 +197,6 @@ console.log(`The plane added to currentPlanes is the same as the plane that land
 console.log(`=========================`);
 
 // Arrange
-testPlane = new Plane(testId);
 expected = testId;
 
 // Act
@@ -208,7 +211,7 @@ report();
 
 // Clean Up
 cleanUp();
-cleanUpPlanes();
+cleanUpAirport();
 
 //! END OF TEST 7
 
@@ -220,8 +223,6 @@ console.log(`Verify that planes can land when planes are already in the airport`
 console.log(`=========================`);
 
 // Arrange
-testPlane = new Plane;
-testPlane2 = new Plane;
 airport.planeLand(testPlane);
 expected = 2;
 
@@ -237,7 +238,7 @@ report();
 
 // Clean Up
 cleanUp();
-cleanUpPlanes();
+cleanUpAirport();
 
 //! END OF TEST 8
 
@@ -249,7 +250,6 @@ console.log(`Verify that currentPlanes decreases by 1 when a plane takes off`);
 console.log(`=========================`);
 
 // Arrange
-testPlane = new Plane;
 airport.planeLand(testPlane);
 expected = airport.currentPlanes.length - 1;
 
@@ -265,7 +265,7 @@ report();
 
 // Clean Up
 cleanUp();
-cleanUpPlanes();
+cleanUpAirport();
 
 //! END OF TEST 9
 
@@ -277,8 +277,6 @@ console.log(`Verify that plane removed from currentPlanes is correct plane`);
 console.log(`=========================`);
 
 // Arrange
-testPlane = new Plane(testId);
-testPlane2 = new Plane(testId2);
 airport.planeLand(testPlane);
 airport.planeLand(testPlane2);
 expected = false;
@@ -295,7 +293,7 @@ report();
 
 // Clean Up
 cleanUp();
-cleanUpPlanes();
+cleanUpAirport();
 
 //! END OF TEST 10
 
@@ -307,8 +305,6 @@ console.log(`Planes cannot land if maximum capacity has been reached`);
 console.log(`=========================`);
 
 // Arrange
-testPlane = new Plane;
-testPlane2 = new Plane;
 airport.changeCapacity(1);
 airport.planeLand(testPlane);
 expected = true;
@@ -331,7 +327,7 @@ report();
 
 // Clean Up
 cleanUp();
-cleanUpPlanes();
+cleanUpAirport();
 
 //! END OF TEST 11
 
@@ -343,8 +339,6 @@ console.log(`Plane can land if it will cause airport to reach capacity`);
 console.log(`=========================`);
 
 // Arrange
-testPlane = new Plane;
-testPlane2 = new Plane;
 airport.changeCapacity(2);
 airport.planeLand(testPlane);
 expected = true;
@@ -361,7 +355,7 @@ report();
 
 // Clean Up
 cleanUp();
-cleanUpPlanes();
+cleanUpAirport();
 
 //! END OF TEST 12
 
@@ -373,23 +367,28 @@ console.log(`Plane can't land if it's already at the airport`);
 console.log(`=========================`);
 
 // Arrange
-testPlane = new Plane(testId);
-testPlane2 = new Plane(testId2);
 airport.planeLand(testPlane);
-expected = false;
+expected = true;
 
 // Act
-actual = airport.planeLand(testPlane);
+try {
+    airport.planeLand(testPlane);
+    actual = false;
+} catch (error) {
+    if (error instanceof Error) {
+        actual = true;
+    }
+}
 
 // Assert
-result = assertFalse(actual);
+result = assertEquals(actual, expected);
 
 // Report
 report();
 
 // Clean Up
 cleanUp();
-cleanUpPlanes();
+cleanUpAirport();
 
 //! END OF TEST 13
 
@@ -402,21 +401,27 @@ console.log(`Plane can't take off if it's not at the airport`);
 console.log(`=========================`);
 
 // Arrange
-testPlane = new Plane(testId);
-expected = false;
+expected = true;
 
 // Act
-actual = airport.planeTakeOff(testPlane);
+try {
+    airport.planeTakeOff(testPlane);
+    actual = false;
+} catch (error) {
+    if (error instanceof Error) {
+        actual = true;
+    }
+}
 
 // Assert
-result = assertFalse(actual);
+result = assertEquals(actual, expected);
 
 // Report
 report();
 
 // Clean Up
 cleanUp();
-cleanUpPlanes();
+cleanUpAirport();
 
 //! END OF TEST 14
 
@@ -429,13 +434,14 @@ console.log(`No planes are removed from currentPlanes if planeTakeOff is called 
 console.log(`=========================`);
 
 // Arrange
-testPlane = new Plane(testId);
-testPlane2 = new Plane(testId2);
 airport.planeLand(testPlane);
 expected = airport.currentPlanes.length;
 
 // Act
-airport.planeTakeOff(testPlane2);
+try {
+    airport.planeTakeOff(testPlane2);
+} catch (error) {}
+
 actual = airport.currentPlanes.length;
 
 // Assert
@@ -446,7 +452,7 @@ report();
 
 // Clean Up
 cleanUp();
-cleanUpPlanes();
+cleanUpAirport();
 
 //! END OF TEST 15
 
@@ -473,7 +479,7 @@ report();
 
 // Clean Up
 cleanUp();
-cleanUpPlanes();
+cleanUpAirport();
 
 //! END OF TEST 16
 
@@ -500,7 +506,7 @@ report();
 
 // Clean Up
 cleanUp();
-cleanUpPlanes();
+cleanUpAirport();
 
 //! END OF TEST 17
 
@@ -514,11 +520,17 @@ console.log(`=========================`);
 
 // Arrange
 testStormy = `stormy`;
-testPlane = new Plane;
 expected = false;
 
 // Act
-actual = airport.safeWeather(testStormy);
+try {
+    airport.planeLand(testPlane, testStormy);
+    actual = true;
+} catch (error) {
+    actual = false;
+}
+// Assert
+result = assertFalse(actual);
 
 // Assert
 result = assertFalse(actual);
@@ -528,7 +540,7 @@ report();
 
 // Clean Up
 cleanUp();
-cleanUpPlanes();
+cleanUpAirport();
 
 //! END OF TEST 18
 
@@ -542,13 +554,16 @@ console.log(`=========================`);
 
 // Arrange
 testStormy = `stormy`;
-testPlane = new Plane;
 airport.planeLand(testPlane);
 expected = false;
 
 // Act
-actual = airport.planeTakeOff(testPlane, testStormy);
-
+try {
+    airport.planeTakeOff(testPlane, testStormy);
+    actual = true;
+} catch (error) {
+    actual = false;
+}
 // Assert
 result = assertFalse(actual);
 
@@ -557,6 +572,6 @@ report();
 
 // Clean Up
 cleanUp();
-cleanUpPlanes();
+cleanUpAirport();
 
 //! END OF TEST 19
