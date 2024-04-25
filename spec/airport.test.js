@@ -498,6 +498,7 @@ cleanUpPlanes();
 
 //! END OF TEST 17
 
+
 //? TEST 18
 //* Verify that plane cannot land during unsafe weather
 
@@ -522,3 +523,34 @@ report();
 // Clean Up
 cleanUp();
 cleanUpPlanes();
+
+//! END OF TEST 18
+
+
+//? TEST 19
+//* Verify that plane cannot take off during unsafe weather
+
+console.log(`TEST 19`);
+console.log(`Verify that plane cannot take off during unsafe weather`);
+console.log(`=========================`);
+
+// Arrange
+testWeather = `stormy`;
+testPlane = new Plane;
+airport.planeLand(testPlane);
+expected = false;
+
+// Act
+actual = airport.planeTakeOff(testPlane, testWeather);
+
+// Assert
+result = assertFalse(actual);
+
+// Report
+report();
+
+// Clean Up
+cleanUp();
+cleanUpPlanes();
+
+//! END OF TEST 19

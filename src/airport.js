@@ -14,8 +14,8 @@ const airport = {
         this.currentPlanes.push(plane);
     },
 
-    planeTakeOff(plane) {
-        if (!this.currentPlanes.includes(plane)) {
+    planeTakeOff(plane, weather) {
+        if (!this.currentPlanes.includes(plane) || !this.safeWeather(weather)) {
             return false;
         }
         this.currentPlanes.splice(this.currentPlanes.indexOf(plane));
