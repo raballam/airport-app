@@ -8,7 +8,7 @@ const cleanUp = () => {
     result = undefined;
     testNumber = undefined;
     airport.changeCapacity();
-    testWeather = undefined;
+    testStormy = undefined;
 }
 
 const cleanUpPlanes = () => {
@@ -24,7 +24,7 @@ const report = () => {
     console.log();
 }
 
-let expected, actual, result, testNumber, testPlane, testPlane2, testWeather;
+let expected, actual, result, testNumber, testPlane, testPlane2, testStormy;
 let testId = 1;
 let testId2 = 2;
 
@@ -453,14 +453,14 @@ console.log(`Verify that airport.safeWeather returns false if weather is stormy`
 console.log(`=========================`);
 
 // Arrange
-testWeather = "stormy";
+testStormy = 'stormy';
 expected = false;
 
 // Act
-actual = airport.safeWeather(testWeather);
+actual = airport.safeWeather(testStormy);
 
 // Assert
-result = assertFalse(actual);
+result = assertFalse(actual, expected);
 
 // Report
 report();
@@ -480,11 +480,11 @@ console.log(`Verify that airport.safeWeather returns true if weather is not stor
 console.log(`=========================`);
 
 // Arrange
-testWeather = "not stormy";
+testStormy = "not stormy";
 expected = true;
 
 // Act
-actual = airport.safeWeather(testWeather);
+actual = airport.safeWeather(testStormy);
 
 // Assert
 result = assertTrue(actual);
@@ -507,12 +507,12 @@ console.log(`Verify that plane cannot land during unsafe weather`);
 console.log(`=========================`);
 
 // Arrange
-testWeather = `stormy`;
+testStormy = `stormy`;
 testPlane = new Plane;
 expected = false;
 
 // Act
-actual = airport.planeLand(testPlane, testWeather);
+actual = airport.safeWeather(testStormy);
 
 // Assert
 result = assertFalse(actual);
@@ -535,13 +535,13 @@ console.log(`Verify that plane cannot take off during unsafe weather`);
 console.log(`=========================`);
 
 // Arrange
-testWeather = `stormy`;
+testStormy = `stormy`;
 testPlane = new Plane;
 airport.planeLand(testPlane);
 expected = false;
 
 // Act
-actual = airport.planeTakeOff(testPlane, testWeather);
+actual = airport.planeTakeOff(testPlane, testStormy);
 
 // Assert
 result = assertFalse(actual);

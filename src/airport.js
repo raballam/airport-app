@@ -7,15 +7,23 @@ const airport = {
         if (number > 0) this.maxCapacity = number;
     },
 
+    atCapacity() {
+        return this.currentPlanes.length >= this.maxCapacity;
+    },
+
+    planeHere(plane) {
+        return this.currentPlanes.includes(plane);
+    },
+
     planeLand(plane, weather) {
-        if (this.currentPlanes.length >= this.maxCapacity || this.currentPlanes.includes(plane) || !this.safeWeather(weather)) {
+        if (this.atCapacity()|| this.planeHere(plane) || !this.safeWeather(weather)) {
             return false;    
         }
         this.currentPlanes.push(plane);
     },
 
     planeTakeOff(plane, weather) {
-        if (!this.currentPlanes.includes(plane) || !this.safeWeather(weather)) {
+        if (!this.planeHere(plane) || !this.safeWeather(weather)) {
             return false;
         }
         this.currentPlanes.splice(this.currentPlanes.indexOf(plane));
