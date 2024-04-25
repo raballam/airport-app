@@ -7,8 +7,8 @@ const airport = {
         if (number > 0) this.maxCapacity = number;
     },
 
-    planeLand(plane) {
-        if (this.currentPlanes.length >= this.maxCapacity || this.currentPlanes.includes(plane)) {
+    planeLand(plane, weather) {
+        if (this.currentPlanes.length >= this.maxCapacity || this.currentPlanes.includes(plane) || !this.safeWeather(weather)) {
             return false;    
         }
         this.currentPlanes.push(plane);

@@ -497,3 +497,28 @@ cleanUp();
 cleanUpPlanes();
 
 //! END OF TEST 17
+
+//? TEST 18
+//* Verify that plane cannot land during unsafe weather
+
+console.log(`TEST 18`);
+console.log(`Verify that plane cannot land during unsafe weather`);
+console.log(`=========================`);
+
+// Arrange
+testWeather = `stormy`;
+testPlane = new Plane;
+expected = false;
+
+// Act
+actual = airport.planeLand(testPlane, testWeather);
+
+// Assert
+result = assertFalse(actual);
+
+// Report
+report();
+
+// Clean Up
+cleanUp();
+cleanUpPlanes();
