@@ -311,11 +311,17 @@ testPlane = new Plane;
 testPlane2 = new Plane;
 airport.changeCapacity(1);
 airport.planeLand(testPlane);
-expected = airport.currentPlanes.length;
+expected = true;
 
 // Act
-airport.planeLand(testPlane2);
-actual = airport.currentPlanes.length;
+try {
+    airport.planeLand(testPlane2);
+    actual = false;
+} catch (error) {
+    if (error instanceof Error) {
+        actual = true;
+    }
+}
 
 // Assert
 result = assertEquals(actual, expected);
