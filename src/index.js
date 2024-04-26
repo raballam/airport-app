@@ -2,7 +2,7 @@ import airport from "./airport.js";
 import Plane from "./Plane.js";
 import weather from "./weather.js";
 
-let  newCapacity, conditions, planeIndex, plane;
+let  newCapacity, weatherConditions, planeIndex, plane;
 
 //? Generates array of 10 planes
 
@@ -16,40 +16,27 @@ for (let i = 0; i < numberOfPlanes; i++) {
 console.log(`\n\t   AIRPORT SOFTWARE DEMO`);
 console.log(`============================================\n\n`);
 
-//* DEMO
-//! This demo is randomly generated and so there is a small chance that
-//! every aspect of functionality will not be shown - 
+//! This demo is randomly generated and so there is a chance that
+//! every aspect of functionality will not be shown each time the demo is run.
 
 let i = 0;
-let limit = 20;
+let limit = 30;
 while (i < limit) {
     planeIndex = Math.floor(Math.random() * 10);
     plane = planes[planeIndex];
-    conditions = weather.currentWeather;
+    weatherConditions = weather.currentWeather;
 
     if (Math.random() < 0.1) {
         newCapacity = Math.floor(Math.random() * 10) + 1;
         airport.changeCapacity(newCapacity);
         console.log(`** AIRPORT CAPACITY HAS BEEN CHANGED TO ${airport.maxCapacity} **\n`);
-
     };
 
     if (Math.random() < 0.5) {
-        try {
-            airport.planeLand(plane, conditions);
-            console.log(`\t- PLANE ${plane.id} CAN LAND\n`);
-
-        } catch (error) {
-            console.error(error.message, `\n`);
-        }
+        airport.landVerify(plane, weatherConditions);
     } else {
-        try {
-            airport.planeTakeOff(plane, conditions);
-            console.log(`\t- PLANE ${plane.id} CAN TAKE OFF\n`);
-
-        } catch (error) {
-            console.error(error.message, `\n`);
-        }
+        airport.takeOffVerify(plane, weatherConditions);
     }
+
     i++;
 };
