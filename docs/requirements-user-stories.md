@@ -5,6 +5,35 @@ This program monitors current conditions at the airport in order to give air tra
 
 ## Benefits
 
+This software monitors current conditions at the airport and verifies arrival and departure requests. By automating processes it streamlines the workflow of air traffic control, standardises practices across teams and offers demonstrable adherence to airport health and safety practices. Removing these routine tasks from the responsibility of the team allows personnel to manage their time more efficiently, leading to improved standards and growth across the board.
+
+The software prevents any erroneous communication with flight crews and allows for professional and direct communication. Flight crews can rely on 
+
+The seamless functionality behind the scenes ensures passengers have a relaxing and reassuring travel experience, eliminating delays and marking the airport as a reliable travel choice for commuters and holiday makers alike.
+
+The software has two main functionalities:
+
+### - Adjustable Capacity
+
+The software sets the maximum capacity of the airport. A default capacity allows general levels to be set, and this can be overridden to ensure no change to standard practices in circumstances such as terminal closures and runway maintenance.
+
+### - Tracks Planes
+
+A list of planes currently at the airport is automatically adjusted as planes arrive and depart. This allows air traffic control to identify when capacity levels have been reached, know what planes are currently at the airport and communicate effectively with flight crews.
+
+### - Weather
+
+The software also monitors current weather and informs air traffic control when there is an active storm, ensuring runway conditions are safe before any communication takes place with flight crews.
+
+### - Verifies Arrival/Departure Requests
+
+When requests are received by the airport, this software automatically checks the capacity, current weather conditions and identification of the plane before verifying or denying the request. This ensures air traffic control can be confident in their communications with flight crews and upholds high standards of safety on the runway.
+
+
+
+
+
+A default capacity of 
 - Defines maximum capacity of the airport so that a safe number of planes is not exceeded.
     - Appropriate personnel can adjust maximum capacity as required, in order to maintain accuracy if circumstances change (eg. closed terminal, maintenance on runways).
 - Keeps track of number of planes at the airport, in order to check whether there is space for planes to land.
@@ -14,6 +43,8 @@ This program monitors current conditions at the airport in order to give air tra
 - Instructs planes to land/takeoff after verifying the above, to facilitate clear communication between air traffic control and flight crew.
   
 ## Risks
+
+
 
 - As personnel are able to adjust airport capacity, there is some room for user error in this program. If the capacity has been adjusted, it may be helpful to draw attention to that by requiring additional confirmation from the user before instructing planes to land.
 - Number of planes at airport is decreased when planes have been instructed to take off, some time *before* the plane has left the airport. It may be safer to confirm successful take off before doing this to ensure the recorded number of planes in the airport reflects the *actual* number of planes using the airport at any one time.

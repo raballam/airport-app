@@ -4,7 +4,8 @@ import weather from "./weather.js";
 
 let  newCapacity, conditions, planeIndex, plane;
 
-// Generates array of test planes
+//? Generates array of 10 planes
+
 const planes = [];
 const numberOfPlanes = 10;
 for (let i = 0; i < numberOfPlanes; i++) {
@@ -12,11 +13,17 @@ for (let i = 0; i < numberOfPlanes; i++) {
     planes.push(plane);
 }
 
-//* DEMO - randomly selects planes from array and attempts to land/take off
+console.log(`\n\t   AIRPORT SOFTWARE DEMO`);
+console.log(`============================================\n\n`);
+
+//* DEMO
+//! This demo is randomly generated and so there is a small chance that
+//! every aspect of functionality will not be shown - 
 
 let i = 0;
-while (i < 15) {
-    planeIndex = Math.floor(Math.random() * 5);
+let limit = 20;
+while (i < limit) {
+    planeIndex = Math.floor(Math.random() * 10);
     plane = planes[planeIndex];
     conditions = weather.currentWeather;
 
@@ -30,7 +37,7 @@ while (i < 15) {
     if (Math.random() < 0.5) {
         try {
             airport.planeLand(plane, conditions);
-            console.log(`PLANE ${plane.id} CAN LAND\n`);
+            console.log(`\t- PLANE ${plane.id} CAN LAND\n`);
 
         } catch (error) {
             console.error(error.message, `\n`);
@@ -38,7 +45,7 @@ while (i < 15) {
     } else {
         try {
             airport.planeTakeOff(plane, conditions);
-            console.log(`PLANE ${plane.id} CAN TAKE OFF\n`);
+            console.log(`\t- PLANE ${plane.id} CAN TAKE OFF\n`);
 
         } catch (error) {
             console.error(error.message, `\n`);
