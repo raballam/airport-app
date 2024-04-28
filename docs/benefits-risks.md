@@ -30,8 +30,6 @@ When requests are received by the airport, this software automatically checks th
 
 ## Risks
 
-There are some risks associated with this product.
-
 As personnel are able to adjust airport capacity, there is some possibility of human error. It may be useful to include pre-set options for different circumstances. In addition, there is no way for personnel to override the system if it is refusing or accepting a plane, before it is added or removed from the list of planes. Occasions may arise where air traffic control may wish to refuse or accept traffic based on factors outwith the scope of this program and it could be improved by included some capacity to do this.
 
 The data recorded about the airport is limited. The traffic flow of the airport could be better managed by including more information about the planes, eg. the size, number of passengers and turnaround time.
