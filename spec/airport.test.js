@@ -111,16 +111,20 @@ cleanUpAirport();
 //* Verify that capacity is not set to null.
 
 console.log(`TEST 4`);
-console.log(`Verify that null is set to default`);
+console.log(`Verify that capacity cannot be set to null`);
 console.log(`=========================`);
 
 // Arrange
 testNumber = null;
-expected = 10;
+expected = true;
 
 // Act
-airport.changeCapacity(testNumber);
-actual = airport.maxCapacity;
+try {
+    airport.changeCapacity(testNumber);
+    actual = false;
+} catch (error) {
+    actual = true;
+}
 
 // Assert
 result = assertEquals(actual, expected);
@@ -147,9 +151,12 @@ testNumber = -1;
 expected = 10;
 
 // Act
-airport.changeCapacity(testNumber);
-actual = airport.maxCapacity;
-
+try {
+    airport.changeCapacity(testNumber);
+    actual = false;
+} catch (error) {
+    actual = true;
+}
 // Assert
 result = assertEquals(actual, expected);
 

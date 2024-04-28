@@ -19,7 +19,7 @@ const airport = {
         return this.currentPlanes.includes(plane);
     },
 
-    //! Order is relevant - if at capacity, no need to check weather conditions; if unsafe conditions, no need to check plane.
+    // Adds plane to currentPlanes if it meets criteria.
     planeLand(plane, weather) {
         if (this.atCapacity()) throw new Error(`\t!! PLANE ${plane.id} UNABLE TO LAND DUE TO:\n\t\tAIRPORT AT CAPACITY`);
         if (!this.safeWeather(weather)) throw new Error(`\t!! PLANE ${plane.id} UNABLE TO LAND DUE TO:\n\t\tUNSAFE WEATHER CONDITIONS`);
@@ -28,14 +28,15 @@ const airport = {
         this.currentPlanes.push(plane);
     },
 
-    //! Order is relevant - if unsafe conditions, no need to check plane.
+    // Removes plane from currentPlanes if it meets criteria.
     planeTakeOff(plane, weather) {
         if (!this.safeWeather(weather)) throw new Error(`\t!! PLANE ${plane.id} UNABLE TO TAKE OFF DUE TO:\n\t\tUNSAFE WEATHER CONDITIONS`);
         if (!this.planeHere(plane)) throw new Error(`\t!! PLANE ${plane.id} UNABLE TO TAKE OFF DUE TO:\n\t\tNOT AT AIRPORT`);
         
         this.currentPlanes.splice(this.currentPlanes.indexOf(plane));
     },
-
+    
+    // Logs success/error messages for landing.
     landVerify(plane, weather) {
         try {
             this.planeLand(plane, weather);
@@ -45,6 +46,7 @@ const airport = {
         }
     },
 
+    // Logs success/error messages for take off.
     takeOffVerify(plane, weather) {
         try {
             this.planeTakeOff(plane, weather);
@@ -54,6 +56,7 @@ const airport = {
         }
     },
 
+    // Logs success/error messages for capacity change.
     changeCapacityVerify(number) {
         if (number !== this.maxCapacity) {
             try {
