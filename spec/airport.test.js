@@ -31,10 +31,10 @@ const testPlane2 = new Plane(testId2);
 
 
 //? TEST 1
-//* Airport has maximum capacity of 10.
+//* Verify that the airport has maximum capacity of 10.
 
 console.log(`TEST 1`);
-console.log(`Airport has maximum capacity of 10.`);
+console.log(`Verify that the airport has maximum capacity of 10.`);
 console.log(`=========================`);
 
 // Arrange
@@ -55,10 +55,10 @@ cleanUp();
 //! END OF TEST 1
 
 //? TEST 2
-//* Maximum capacity can be adjusted.
+//* Verify that maximum capacity can be adjusted.
 
 console.log(`TEST 2`);
-console.log(`Maximum capacity can be adjusted.`);
+console.log(`Verify that maximum capacity can be adjusted.`);
 console.log(`=========================`);
 
 // Arrange
@@ -108,7 +108,7 @@ cleanUpAirport();
 //! END OF TEST 3
 
 //? TEST 4
-//* Verify that null is set to default.
+//* Verify that capacity is not set to null.
 
 console.log(`TEST 4`);
 console.log(`Verify that null is set to default`);
@@ -164,10 +164,10 @@ cleanUpAirport();
 
 
 //? TEST 6
-//* numberOfPlanes increases by 1 when plane lands
+//* Verify that currentPlanes increases by 1 when plane lands
 
 console.log(`TEST 6`);
-console.log(`currentPlanes array increases by 1 when plane lands`);
+console.log(`Verify that currentPlanes array increases by 1 when plane lands`);
 console.log(`=========================`);
 
 // Arrange
@@ -190,10 +190,10 @@ cleanUpAirport();
 //! END OF TEST 6
 
 //? TEST 7
-//* The plane added to currentPlanes is the same as the plane that lands
+//* Verify that the plane added to currentPlanes is the same as the plane that lands
 
 console.log(`TEST 7`);
-console.log(`The plane added to currentPlanes is the same as the plane that lands`);
+console.log(`Verify that the plane added to currentPlanes is the same as the plane that lands`);
 console.log(`=========================`);
 
 // Arrange
@@ -298,10 +298,10 @@ cleanUpAirport();
 //! END OF TEST 10
 
 //? TEST 11
-//* Planes cannot land if maximum capacity has been reached
+//* Verify that planes cannot land if maximum capacity has been reached
 
 console.log(`TEST 11`);
-console.log(`Planes cannot land if maximum capacity has been reached`);
+console.log(`Verify that planes cannot land if maximum capacity has been reached`);
 console.log(`=========================`);
 
 // Arrange
@@ -332,10 +332,10 @@ cleanUpAirport();
 //! END OF TEST 11
 
 //? TEST 12
-//* Plane can land if it will cause airport to reach capacity
+//* Verify plane can land if it will cause airport to reach capacity
 
 console.log(`TEST 12`);
-console.log(`Plane can land if it will cause airport to reach capacity`);
+console.log(`Verify plane can land if it will cause airport to reach capacity`);
 console.log(`=========================`);
 
 // Arrange
@@ -360,10 +360,10 @@ cleanUpAirport();
 //! END OF TEST 12
 
 //? TEST 13
-//* Plane can't land if it's already at the airport
+//* Verify that plane can't land if it's already at the airport
 
 console.log(`TEST 13`);
-console.log(`Plane can't land if it's already at the airport`);
+console.log(`Verify that plane can't land if it's already at the airport`);
 console.log(`=========================`);
 
 // Arrange
@@ -394,10 +394,10 @@ cleanUpAirport();
 
 
 //? TEST 14
-//* Plane can't take off if it's not at the airport
+//* Verify that plane can't take off if it's not at the airport
 
 console.log(`TEST 14`);
-console.log(`Plane can't take off if it's not at the airport`);
+console.log(`Verify that plane can't take off if it's not at the airport`);
 console.log(`=========================`);
 
 // Arrange
@@ -427,10 +427,10 @@ cleanUpAirport();
 
 
 //? TEST 15
-//* No planes are removed from currentPlanes if planeTakeOff is called with plane that is not there
+//* Verify that no planes are removed from currentPlanes if planeTakeOff is called with plane that is not there
 
 console.log(`TEST 15`);
-console.log(`No planes are removed from currentPlanes if planeTakeOff is called with plane that is not there`);
+console.log(`Verify that no planes are removed from currentPlanes if planeTakeOff is called with plane that is not there`);
 console.log(`=========================`);
 
 // Arrange

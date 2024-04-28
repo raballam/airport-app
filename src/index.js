@@ -26,10 +26,14 @@ while (i < limit) {
     plane = planes[planeIndex];
     weatherConditions = weather.currentWeather;
 
+    //* Just to demonstrate that capacity cannot be changed to null
+    i === 4 && airport.changeCapacityVerify(null);
+
     if (Math.random() < 0.1) {
         newCapacity = Math.floor(Math.random() * 10) + 1;
-        airport.changeCapacity(newCapacity);
-        console.log(`** AIRPORT CAPACITY HAS BEEN CHANGED TO ${airport.maxCapacity} **\n`);
+        if (newCapacity % 3 === 0) newCapacity = null;
+        if (newCapacity % 4 === 0) newCapacity = 'abc';
+        airport.changeCapacityVerify(newCapacity);
     };
 
     if (Math.random() < 0.5) {
@@ -40,3 +44,5 @@ while (i < limit) {
 
     i++;
 };
+
+

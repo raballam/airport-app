@@ -3,8 +3,8 @@ const airport = {
     currentPlanes: [],
     
     changeCapacity(number = 10) {
-        if (Number.isNaN(number)) number = 10;
-        if (number > 0) this.maxCapacity = number;
+        if (isNaN(number) || number === null || (number < 0)) throw new Error (`!!**  UNSUITABLE INPUT, CAPACITY UNCHANGED  **!!\n`);
+        this.maxCapacity = number;
     },
 
     atCapacity() {
@@ -53,6 +53,17 @@ const airport = {
             console.error(error.message, `\n`);
         }
     },
+
+    changeCapacityVerify(number) {
+        if (number !== this.maxCapacity) {
+            try {
+                this.changeCapacity(number);
+                console.log(`** AIRPORT CAPACITY HAS BEEN CHANGED TO ${this.maxCapacity} **\n`);
+            } catch (error) {
+                console.error(error.message, `\n`);
+            }
+        }
+    }
  } 
 
 export default airport;
